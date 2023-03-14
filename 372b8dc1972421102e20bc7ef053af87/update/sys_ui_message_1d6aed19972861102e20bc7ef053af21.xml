@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_message">
+    <sys_ui_message action="INSERT_OR_UPDATE">
+        <application>Virtual Agent</application>
+        <code/>
+        <commented_message/>
+        <key>hello {0}, iam chatgpt. my function is to assist users in generating human like text. how can i help you?</key>
+        <language>en</language>
+        <message>Hello {0}, iam ChatGPT. My function is to assist users in generating human like text. How can i help you?</message>
+        <sys_class_name>sys_ui_message</sys_class_name>
+        <sys_created_by>admin_gv_zhohn</sys_created_by>
+        <sys_created_on>2023-01-21 13:34:02</sys_created_on>
+        <sys_id>1d6aed19972861102e20bc7ef053af21</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>hello {0}, iam chatgpt. my function is to assist users in generating human like text. how can i help you?</sys_name>
+        <sys_package display_value="Chat GPT 3" source="x_933232_chat_gpt">372b8dc1972421102e20bc7ef053af87</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Chat GPT 3">372b8dc1972421102e20bc7ef053af87</sys_scope>
+        <sys_update_name>sys_ui_message_1d6aed19972861102e20bc7ef053af21</sys_update_name>
+        <sys_updated_by>admin_gv_zhohn</sys_updated_by>
+        <sys_updated_on>2023-01-21 13:34:02</sys_updated_on>
+    </sys_ui_message>
+</record_update>

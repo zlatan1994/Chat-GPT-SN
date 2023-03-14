@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_auth_profile_basic">
+    <sys_auth_profile_basic action="INSERT_OR_UPDATE">
+        <name>Chat GPT </name>
+        <password>﷞﷟﷒3253222e973611102e20bc7ef053af66﷬﷔1﷬﷭K5lf5N6DHi9tefXjn_KKhQ==XEwr1iCbmIr9k6o1U8OvVS4GvW5W2eQWbIuKEQnpMiCAPTlcxjp1vHqn3uqofpiIdYMaZ7a0go2-J_WWLyBKWqGyTw==﷮﷯</password>
+        <sys_class_name>sys_auth_profile_basic</sys_class_name>
+        <sys_created_by>admin_gv_zhohn</sys_created_by>
+        <sys_created_on>2023-01-23 09:12:31</sys_created_on>
+        <sys_id>30a107bd97a8e1102e20bc7ef053aff8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Chat GPT </sys_name>
+        <sys_package display_value="Chat GPT 3" source="x_933232_chat_gpt">372b8dc1972421102e20bc7ef053af87</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Chat GPT 3">372b8dc1972421102e20bc7ef053af87</sys_scope>
+        <sys_update_name>sys_auth_profile_basic_30a107bd97a8e1102e20bc7ef053aff8</sys_update_name>
+        <sys_updated_by>admin_gv_zhohn</sys_updated_by>
+        <sys_updated_on>2023-01-23 09:12:31</sys_updated_on>
+        <username>Bearer</username>
+    </sys_auth_profile_basic>
+</record_update>

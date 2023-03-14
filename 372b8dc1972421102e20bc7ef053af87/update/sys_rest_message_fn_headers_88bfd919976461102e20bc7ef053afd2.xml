@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn_headers">
+    <sys_rest_message_fn_headers action="INSERT_OR_UPDATE">
+        <name>Authorization</name>
+        <rest_message_function display_value="POST">a7fd5d99976461102e20bc7ef053af2a</rest_message_function>
+        <sys_class_name>sys_rest_message_fn_headers</sys_class_name>
+        <sys_created_by>admin_gv_zhohn</sys_created_by>
+        <sys_created_on>2023-01-21 12:50:22</sys_created_on>
+        <sys_id>88bfd919976461102e20bc7ef053afd2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Authorization</sys_name>
+        <sys_package display_value="Chat GPT 3" source="x_933232_chat_gpt">372b8dc1972421102e20bc7ef053af87</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Chat GPT 3">372b8dc1972421102e20bc7ef053af87</sys_scope>
+        <sys_update_name>sys_rest_message_fn_headers_88bfd919976461102e20bc7ef053afd2</sys_update_name>
+        <sys_updated_by>admin_gv_zhohn</sys_updated_by>
+        <sys_updated_on>2023-01-21 12:50:22</sys_updated_on>
+        <value>Bearer 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</value>
+    </sys_rest_message_fn_headers>
+</record_update>

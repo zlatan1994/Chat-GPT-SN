@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_cb_topic">
+    <sys_cb_topic action="INSERT_OR_UPDATE">
+        <applicability/>
+        <applicability_mode>query</applicability_mode>
+        <autopilot_topic>false</autopilot_topic>
+        <category/>
+        <channels/>
+        <connect_queue/>
+        <description/>
+        <expose_on_palette>false</expose_on_palette>
+        <flexible_conversation_switching>false</flexible_conversation_switching>
+        <graph>{
+  "graph_api_version": "1.0.41",
+  "goals": {
+    "primary": {
+      "id": "primary",
+      "trigger": {
+        "type": "primary"
+      },
+      "name": "primary",
+      "applicability": "",
+      "description": "",
+      "nodes": {
+        "0dd7c983c5d74a6686f87a330998c74d": {
+          "id": "0dd7c983c5d74a6686f87a330998c74d",
+          "stepType": "Start",
+          "name": "Start",
+          "greetingResponse": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "2f88e071037a480580d932e3b4c3dba8": {
+          "id": "2f88e071037a480580d932e3b4c3dba8",
+          "stepType": "TerminateGoal",
+          "name": "End",
+          "confirmationMessage": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "8c0e61b4a08c4782bc72930a047db0cc": {
+          "id": "8c0e61b4a08c4782bc72930a047db0cc",
+          "stepType": "Prompt",
+          "name": "question",
+          "prompt": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Hello "
+                  },
+                  {
+                    "type": "datapill",
+                    "dataPill": {
+                      "value": "{{vaInputs.user.first_name}}",
+                      "displayValue": "Input Variables➛User➛First name"
+                    },
+                    "children": [
+                      {
+                        "text": ""
+                      }
+                    ]
+                  },
+                  {
+                    "text": ", iam ChatGPT. My function is to assist users in generating human like text. How can i help you?"
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "skippable": {
+            "value": "",
+            "mode": "query"
+          },
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "withNluUserInput": false,
+          "skipIfFulfilled": false,
+          "variableId": "241255b4f89c41c3bdac49e0846c45fd",
+          "inputType": {
+            "format": "Text",
+            "script": ""
+          }
+        },
+        "898b203d71b048b28cbb6b8bfcde6925": {
+          "id": "898b203d71b048b28cbb6b8bfcde6925",
+          "stepType": "ScriptOutput",
+          "name": "answer",
+          "output_type": "single_part",
+          "script": "(function execute() {\nvar request = new sn_ws.RESTMessageV2(\"Open AI Chat GPT\",\"POST\");\n        var temperature = 0;\n        var maxtokens =1024;\n        request.setStringParameterNoEscape(\"model\",\"text-davinci-003\");\n        request.setStringParameterNoEscape(\"prompt\", vaInputs.question.getDisplayValue());\n        request.setStringParameterNoEscape(\"temperature\",temperature);\n        request.setStringParameterNoEscape(\"max_tokens\",maxtokens);\n\n        var response = request.execute();\n        //var responseBody = response.getBody();\n        //var responseObject = JSON.parse(responseBody);\n        // Parse the response\n        var response_body = JSON.parse(response.getBody());\n        var answer = response_body.choices[0].text;\n        //print the response from ChatGPT\n        return answer;\n})()\n",
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          }
+        },
+        "8fc71563ce954c38a4f121d525df0526": {
+          "stepType": "ChoicePrompt",
+          "name": "question_2",
+          "prompt": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Do you have any other questions?"
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "skippable": {
+            "value": "",
+            "mode": "query"
+          },
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "variableId": "65d3cdaeccfb47debb78112afa022abc",
+          "id": "8fc71563ce954c38a4f121d525df0526",
+          "hasCardHeader": false,
+          "cardMetadata": {
+            "mode": "card",
+            "metadataScript": "",
+            "cardTemplate": "",
+            "cardFields": {},
+            "cardDefinition": {}
+          },
+          "withNluUserInput": false,
+          "skipIfFulfilled": false
+        },
+        "078189b1794947fe8e6e46c47671fb4f": {
+          "id": "078189b1794947fe8e6e46c47671fb4f",
+          "stepType": "Decision",
+          "name": "Decision"
+        }
+      },
+      "edges": [
+        {
+          "id": "02db5775250e4828a487b79ccb88561f",
+          "edgeType": "Edge",
+          "source": "0dd7c983c5d74a6686f87a330998c74d",
+          "target": "8c0e61b4a08c4782bc72930a047db0cc",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "21b7d482533f46c2b4c5a26e1a87576a",
+          "edgeType": "Edge",
+          "source": "8c0e61b4a08c4782bc72930a047db0cc",
+          "target": "898b203d71b048b28cbb6b8bfcde6925",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "af0e6f12eb3a4abdbe5d8a3be3afed6e",
+          "edgeType": "Edge",
+          "source": "898b203d71b048b28cbb6b8bfcde6925",
+          "target": "8fc71563ce954c38a4f121d525df0526",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "c1336cd97c094efabfee74aaa983525b",
+          "edgeType": "Edge",
+          "source": "8fc71563ce954c38a4f121d525df0526",
+          "target": "078189b1794947fe8e6e46c47671fb4f",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "7fc279b0ef894be79c3c15505bb94950",
+          "edgeType": "Branch",
+          "source": "078189b1794947fe8e6e46c47671fb4f",
+          "target": "2f88e071037a480580d932e3b4c3dba8",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "value": "vaInputs.question_2=No",
+            "mode": "query"
+          },
+          "label": "no"
+        },
+        {
+          "id": "61f010e1f7cb4bdebfd643b8ab26a777",
+          "edgeType": "Branch",
+          "source": "078189b1794947fe8e6e46c47671fb4f",
+          "target": "8c0e61b4a08c4782bc72930a047db0cc",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "value": "vaInputs.question_2=Yes",
+            "mode": "query"
+          },
+          "label": "Yes"
+        }
+      ]
+    }
+  },
+  "variables": {
+    "current-user": {
+      "category": "vaInputs",
+      "id": "current-user",
+      "label": "User",
+      "name": "user",
+      "table": "sys_user",
+      "varType": "reference"
+    },
+    "241255b4f89c41c3bdac49e0846c45fd": {
+      "id": "241255b4f89c41c3bdac49e0846c45fd",
+      "name": "question",
+      "label": "Question",
+      "varType": "string",
+      "secure": false,
+      "category": "vaInputs",
+      "encryptionHashFunction": "SHA-256",
+      "encryptionSalt": {
+        "value": "MTY3NDMwNzUxNzgzMiBWQSBEZXNpZ25lciBpcyBhd2Vzb21l",
+        "mode": "simple"
+      }
+    },
+    "65d3cdaeccfb47debb78112afa022abc": {
+      "id": "65d3cdaeccfb47debb78112afa022abc",
+      "name": "question_2",
+      "label": "Question_2",
+      "varType": "choice",
+      "choices": [
+        {
+          "label": "Yes",
+          "value": "Yes"
+        },
+        {
+          "label": "No",
+          "value": "No"
+        }
+      ],
+      "category": "vaInputs"
+    }
+  }
+}</graph>
+        <key_phrases>Ask Open AI - Chat GPT</key_phrases>
+        <library>false</library>
+        <live_agent>false</live_agent>
+        <name>Ask Open AI - Chat GPT</name>
+        <nlu_intent/>
+        <nlu_intent_label/>
+        <nlu_model/>
+        <nlu_model_label/>
+        <nlu_provider/>
+        <palette_label/>
+        <roles/>
+        <secure_custom_input_control>false</secure_custom_input_control>
+        <source_topic_id/>
+        <sys_class_name>sys_cb_topic</sys_class_name>
+        <sys_created_by>admin_gv_zhohn</sys_created_by>
+        <sys_created_on>2023-01-21 13:24:37</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>1338ed55972861102e20bc7ef053af4d</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>Ask Open AI - Chat GPT</sys_name>
+        <sys_package display_value="Chat GPT 3" source="x_933232_chat_gpt">372b8dc1972421102e20bc7ef053af87</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Chat GPT 3">372b8dc1972421102e20bc7ef053af87</sys_scope>
+        <sys_update_name>sys_cb_topic_1338ed55972861102e20bc7ef053af4d</sys_update_name>
+        <sys_updated_by>admin_gv_zhohn</sys_updated_by>
+        <sys_updated_on>2023-01-23 12:48:57</sys_updated_on>
+        <triggerable_by_notification>false</triggerable_by_notification>
+        <type>STANDARD</type>
+        <variables/>
+    </sys_cb_topic>
+    <sys_variable_value action="delete_multiple" query="document_key=1338ed55972861102e20bc7ef053af4d"/>
+</record_update>

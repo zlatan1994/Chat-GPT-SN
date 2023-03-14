@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_cb_design_topic">
+    <sys_cb_design_topic action="INSERT_OR_UPDATE">
+        <compiled_topic display_value="Ask Open AI - Chat GPT">990c21dd972861102e20bc7ef053afb8</compiled_topic>
+        <design_definition>{"type":"FlowTopic","type":"FlowTopic","triggers":[{"type":"Trigger","name":"8061ace2e2484907860270a96a044490","triggerType":"request","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"id":"8061ace2e2484907860270a96a044490"}],"goals":[{"name":"primary","trigger_id":"8061ace2e2484907860270a96a044490","nodes":[{"type":"StartGoal","type":"StartGoal","goal_id":"primary","greeting_msg":{"type":"String","type":"String","mode":"string","value":""},"id":"0dd7c983c5d74a6686f87a330998c74d","name":"Start"},{"type":"TerminateGoal","type":"TerminateGoal","goal_id":"primary","confirmation_msg":{"type":"String","type":"String","mode":"string","value":""},"id":"2f88e071037a480580d932e3b4c3dba8","name":"End"},{"type":"InputPrompt","type":"InputPrompt","variable_id":"241255b4f89c41c3bdac49e0846c45fd","message":{"type":"String","type":"String","mode":"string","value":"gs.getMessageLang(\"Hello {0}, iam ChatGPT. My function is to assist users in generating human like text. How can i help you?\", vaContext.getRequesterLang(), [vaInputs.user.first_name])"},"nlu_entity_binding":{"type":"NLUEntityBinding","allow_text_input":false,"use_confirmation_prompt":true},"skippable":{"type":"Applicability","type":"Applicability","mode":"script","value":"false"},"id":"8c0e61b4a08c4782bc72930a047db0cc","name":"question","goal_id":"primary","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"formatType":"Text","validationScript":""},{"type":"ScriptOutputPrompt","type":"ScriptOutputPrompt","output_type":"single_part","id":"898b203d71b048b28cbb6b8bfcde6925","name":"answer","goal_id":"primary","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"value":{"type":"String","type":"String","mode":"string","value":"(function execute() {\nvar request = new sn_ws.RESTMessageV2(\"Open AI Chat GPT\",\"POST\");\n        var temperature = 0;\n        var maxtokens =1024;\n        request.setStringParameterNoEscape(\"model\",\"text-davinci-003\");\n        request.setStringParameterNoEscape(\"prompt\", vaInputs.question.getDisplayValue());\n        request.setStringParameterNoEscape(\"temperature\",temperature);\n        request.setStringParameterNoEscape(\"max_tokens\",maxtokens);\n\n        var response = request.execute();\n        //var responseBody = response.getBody();\n        //var responseObject = JSON.parse(responseBody);\n        // Parse the response\n        var response_body = JSON.parse(response.getBody());\n        var answer = response_body.choices[0].text;\n        //print the response from ChatGPT\n        return answer;\n})()\n"},"secure":false},{"type":"ChoiceInputPrompt","type":"ChoiceInputPrompt","expression_mode":"simple","metadataScript":"","cardName":"","cardFields":[],"id":"8fc71563ce954c38a4f121d525df0526","name":"question_2","goal_id":"primary","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"variable_id":"65d3cdaeccfb47debb78112afa022abc","message":{"type":"String","type":"String","mode":"string","value":"gs.getMessageLang(\"Do you have any other questions?\", vaContext.getRequesterLang())"},"skippable":{"type":"Applicability","type":"Applicability","mode":"script","value":"false"},"nlu_entity_binding":{"type":"NLUEntityBinding","allow_text_input":false,"use_confirmation_prompt":true}},{"type":"Decision","type":"Decision","name":"Decision","branches":[{"type":"Branch","type":"Branch","label":"no","expression":{"type":"Applicability","type":"Applicability","mode":"query","value":"question_2=No"},"id":"88fd02fd8ae54dc0a9e9baa51a0fd589","name":"no"},{"type":"Branch","type":"Branch","label":"Yes","expression":{"type":"Applicability","type":"Applicability","mode":"query","value":"question_2=Yes"},"id":"747a17012402496e85c87a204743f9ce","name":"Yes"}],"id":"078189b1794947fe8e6e46c47671fb4f","goal_id":"primary"}],"edges":[{"type":"Edge","source_node_id":"0dd7c983c5d74a6686f87a330998c74d","target_node_id":"8c0e61b4a08c4782bc72930a047db0cc","id":"02db5775250e4828a487b79ccb88561f"},{"type":"Edge","source_node_id":"8c0e61b4a08c4782bc72930a047db0cc","target_node_id":"898b203d71b048b28cbb6b8bfcde6925","id":"21b7d482533f46c2b4c5a26e1a87576a"},{"type":"Edge","source_node_id":"898b203d71b048b28cbb6b8bfcde6925","target_node_id":"8fc71563ce954c38a4f121d525df0526","id":"af0e6f12eb3a4abdbe5d8a3be3afed6e"},{"type":"Edge","source_node_id":"8fc71563ce954c38a4f121d525df0526","target_node_id":"078189b1794947fe8e6e46c47671fb4f","id":"c1336cd97c094efabfee74aaa983525b"},{"type":"Edge","source_node_id":"078189b1794947fe8e6e46c47671fb4f","target_node_id":"2f88e071037a480580d932e3b4c3dba8","branch_id":"88fd02fd8ae54dc0a9e9baa51a0fd589","id":"7fc279b0ef894be79c3c15505bb94950","name":"88fd02fd8ae54dc0a9e9baa51a0fd589"},{"type":"Edge","source_node_id":"078189b1794947fe8e6e46c47671fb4f","target_node_id":"8c0e61b4a08c4782bc72930a047db0cc","branch_id":"747a17012402496e85c87a204743f9ce","id":"61f010e1f7cb4bdebfd643b8ab26a777","name":"747a17012402496e85c87a204743f9ce"}],"id":"primary"}],"script_variables":[],"glide_variables":[{"type":"Reference","type":"Reference","table":"sys_user","id":"current-user","name":"user","formatType":"text","secure":false,"sensitive":false,"list":false},{"type":"VariableDto","type":"String","name":"question","list":false,"id":"241255b4f89c41c3bdac49e0846c45fd","formatType":"Text","validationScript":"","secure":false,"sensitive":false},{"type":"Choice","type":"Choice","choices":[{"name":"Yes","element":"Yes"},{"name":"No","element":"No"}],"id":"65d3cdaeccfb47debb78112afa022abc","name":"question_2","formatType":"text","secure":false,"sensitive":false,"list":false}],"applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"roles":[],"scope":"372b8dc1972421102e20bc7ef053af87","domain":"global","topic_type":"STANDARD","channels":[],"id":"1338ed55972861102e20bc7ef053af4d","name":"Ask Open AI - Chat GPT","key_phrases":["Ask Open AI - Chat GPT"],"nlu_provider":"","nlu_model":"","nlu_model_label":"","nlu_intent":"","nlu_intent_label":"","flexible_conversation_switching":false,"autopilot_topic":false,"design_categories":[],"triggerable_by_notification":false,"library":false,"readOnly":false,"nluMapping":"[]"}</design_definition>
+        <design_topic_id>1338ed55972861102e20bc7ef053af4d</design_topic_id>
+        <graph>{
+  "graph_api_version": "1.0.41",
+  "goals": {
+    "primary": {
+      "id": "primary",
+      "trigger": {
+        "type": "primary"
+      },
+      "name": "primary",
+      "applicability": "",
+      "description": "",
+      "nodes": {
+        "0dd7c983c5d74a6686f87a330998c74d": {
+          "id": "0dd7c983c5d74a6686f87a330998c74d",
+          "stepType": "Start",
+          "name": "Start",
+          "greetingResponse": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "2f88e071037a480580d932e3b4c3dba8": {
+          "id": "2f88e071037a480580d932e3b4c3dba8",
+          "stepType": "TerminateGoal",
+          "name": "End",
+          "confirmationMessage": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "8c0e61b4a08c4782bc72930a047db0cc": {
+          "id": "8c0e61b4a08c4782bc72930a047db0cc",
+          "stepType": "Prompt",
+          "name": "question",
+          "prompt": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Hello "
+                  },
+                  {
+                    "type": "datapill",
+                    "dataPill": {
+                      "value": "{{vaInputs.user.first_name}}",
+                      "displayValue": "Input Variables➛User➛First name"
+                    },
+                    "children": [
+                      {
+                        "text": ""
+                      }
+                    ]
+                  },
+                  {
+                    "text": ", iam ChatGPT. My function is to assist users in generating human like text. How can i help you?"
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "skippable": {
+            "value": "",
+            "mode": "query"
+          },
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "withNluUserInput": false,
+          "skipIfFulfilled": false,
+          "variableId": "241255b4f89c41c3bdac49e0846c45fd",
+          "inputType": {
+            "format": "Text",
+            "script": ""
+          }
+        },
+        "898b203d71b048b28cbb6b8bfcde6925": {
+          "id": "898b203d71b048b28cbb6b8bfcde6925",
+          "stepType": "ScriptOutput",
+          "name": "answer",
+          "output_type": "single_part",
+          "script": "(function execute() {\nvar request = new sn_ws.RESTMessageV2(\"Open AI Chat GPT\",\"POST\");\n        var temperature = 0;\n        var maxtokens =1024;\n        request.setStringParameterNoEscape(\"model\",\"text-davinci-003\");\n        request.setStringParameterNoEscape(\"prompt\", vaInputs.question.getDisplayValue());\n        request.setStringParameterNoEscape(\"temperature\",temperature);\n        request.setStringParameterNoEscape(\"max_tokens\",maxtokens);\n\n        var response = request.execute();\n        //var responseBody = response.getBody();\n        //var responseObject = JSON.parse(responseBody);\n        // Parse the response\n        var response_body = JSON.parse(response.getBody());\n        var answer = response_body.choices[0].text;\n        //print the response from ChatGPT\n        return answer;\n})()\n",
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          }
+        },
+        "8fc71563ce954c38a4f121d525df0526": {
+          "stepType": "ChoicePrompt",
+          "name": "question_2",
+          "prompt": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Do you have any other questions?"
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "skippable": {
+            "value": "",
+            "mode": "query"
+          },
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "variableId": "65d3cdaeccfb47debb78112afa022abc",
+          "id": "8fc71563ce954c38a4f121d525df0526",
+          "hasCardHeader": false,
+          "cardMetadata": {
+            "mode": "card",
+            "metadataScript": "",
+            "cardTemplate": "",
+            "cardFields": {},
+            "cardDefinition": {}
+          },
+          "withNluUserInput": false,
+          "skipIfFulfilled": false
+        },
+        "078189b1794947fe8e6e46c47671fb4f": {
+          "id": "078189b1794947fe8e6e46c47671fb4f",
+          "stepType": "Decision",
+          "name": "Decision"
+        }
+      },
+      "edges": [
+        {
+          "id": "02db5775250e4828a487b79ccb88561f",
+          "edgeType": "Edge",
+          "source": "0dd7c983c5d74a6686f87a330998c74d",
+          "target": "8c0e61b4a08c4782bc72930a047db0cc",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "21b7d482533f46c2b4c5a26e1a87576a",
+          "edgeType": "Edge",
+          "source": "8c0e61b4a08c4782bc72930a047db0cc",
+          "target": "898b203d71b048b28cbb6b8bfcde6925",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "af0e6f12eb3a4abdbe5d8a3be3afed6e",
+          "edgeType": "Edge",
+          "source": "898b203d71b048b28cbb6b8bfcde6925",
+          "target": "8fc71563ce954c38a4f121d525df0526",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "c1336cd97c094efabfee74aaa983525b",
+          "edgeType": "Edge",
+          "source": "8fc71563ce954c38a4f121d525df0526",
+          "target": "078189b1794947fe8e6e46c47671fb4f",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "7fc279b0ef894be79c3c15505bb94950",
+          "edgeType": "Branch",
+          "source": "078189b1794947fe8e6e46c47671fb4f",
+          "target": "2f88e071037a480580d932e3b4c3dba8",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "value": "vaInputs.question_2=No",
+            "mode": "query"
+          },
+          "label": "no"
+        },
+        {
+          "id": "61f010e1f7cb4bdebfd643b8ab26a777",
+          "edgeType": "Branch",
+          "source": "078189b1794947fe8e6e46c47671fb4f",
+          "target": "8c0e61b4a08c4782bc72930a047db0cc",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "value": "vaInputs.question_2=Yes",
+            "mode": "query"
+          },
+          "label": "Yes"
+        }
+      ]
+    }
+  },
+  "variables": {
+    "current-user": {
+      "category": "vaInputs",
+      "id": "current-user",
+      "label": "User",
+      "name": "user",
+      "table": "sys_user",
+      "varType": "reference"
+    },
+    "241255b4f89c41c3bdac49e0846c45fd": {
+      "id": "241255b4f89c41c3bdac49e0846c45fd",
+      "name": "question",
+      "label": "Question",
+      "varType": "string",
+      "secure": false,
+      "category": "vaInputs",
+      "encryptionHashFunction": "SHA-256",
+      "encryptionSalt": {
+        "value": "MTY3NDMwNzUxNzgzMiBWQSBEZXNpZ25lciBpcyBhd2Vzb21l",
+        "mode": "simple"
+      }
+    },
+    "65d3cdaeccfb47debb78112afa022abc": {
+      "id": "65d3cdaeccfb47debb78112afa022abc",
+      "name": "question_2",
+      "label": "Question_2",
+      "varType": "choice",
+      "choices": [
+        {
+          "label": "Yes",
+          "value": "Yes"
+        },
+        {
+          "label": "No",
+          "value": "No"
+        }
+      ],
+      "category": "vaInputs"
+    }
+  }
+}</graph>
+        <name>Ask Open AI - Chat GPT</name>
+        <sys_class_name>sys_cb_design_topic</sys_class_name>
+        <sys_created_by>admin_gv_zhohn</sys_created_by>
+        <sys_created_on>2023-01-21 13:41:07</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>590c21dd972861102e20bc7ef053afbc</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>FlowTopic</sys_name>
+        <sys_package display_value="Chat GPT 3" source="x_933232_chat_gpt">372b8dc1972421102e20bc7ef053af87</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Chat GPT 3">372b8dc1972421102e20bc7ef053af87</sys_scope>
+        <sys_update_name>sys_cb_design_topic_590c21dd972861102e20bc7ef053afbc</sys_update_name>
+        <sys_updated_by>admin_gv_zhohn</sys_updated_by>
+        <sys_updated_on>2023-01-23 12:49:43</sys_updated_on>
+        <type>FlowTopic</type>
+    </sys_cb_design_topic>
+</record_update>
